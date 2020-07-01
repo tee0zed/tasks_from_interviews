@@ -1,6 +1,6 @@
 # tasks_from_interviews
 
-## and solving(mine)
+## and solvings(mine)
 
 ### max_subarray
 
