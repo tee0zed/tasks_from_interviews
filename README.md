@@ -1,5 +1,8 @@
 # tasks_from_interviews
 
+Disclaimer: все решения здесь не слизанны откуда то, а мои, полученные потом кровью и образованием новых нейронных связей в моем мозгу.
+Ознакомление приветствуется. Выдача за своё влечет долгий и нудный разговор с собственной совестью.  
+
 ## and solvings(mine)
 
 ### max_subarray
@@ -81,4 +84,38 @@ def consist_of?(string)
  arr.each { |chunk| string.delete!(chunk) }
  string.empty? 
 end 
+```
+
+### Sqr_root 
+
+Напишите метод который бы возвращал квадратный корень указанного числа. 
+
+-_-
+
+```
+def sqrt(num)
+  Math.sqrt(num)
+end
+```
+без магии
+```
+def sqrt?(num, try)
+  try**2 == num
+end 
+
+def sqrt(num, try = num)
+  if sqrt?(num, try)
+    return try
+  elsif try**2 > num
+    try /= 2
+    try += 1
+  else 
+    try *= 2
+  end 
+  sqrt(num, try)
+rescue SystemStackError
+  abort "There's no rational root for this num!"
+end
+
+puts sqrt(2209)
 ```
