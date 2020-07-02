@@ -118,3 +118,22 @@ end
 
 puts sqrt(2209)
 ```
+
+### Consist of squares? 
+
+
+```
+num = gets.to_i
+
+def sum_of_sqr?(num)
+  num2 =  num / 4 
+  (1..num2).each do |first_num| 
+    (1..first_num).each do |second_num|
+      return "true" if first_num**2 + second_num**2 == num
+    end 
+  end
+  return "false"
+end 
+  
+puts sum_of_sqr?(num)
+```
