@@ -125,7 +125,6 @@ puts sqrt(2209)
 
 ```
 def sum_of_sq?(num, high = Math.sqrt(num).round(1), low = 1)
-  
   try = [high**2, low**2].sum
   
   if try == num
