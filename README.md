@@ -144,3 +144,32 @@ num = gets.to_i
 
 puts sum_of_sq?(num)
 ```
+
+### Какой приз? 
+
+Играет 2 футбольные команды.
+Напишите метод, которому на ввод дается два счета: реальный и предпологаемый.
+Метод вернет 2 если счет был угадан точно, 1 если был угадан только результат игры и 0 если не угадан.
+
+```
+def which_prize?(real, supposed)
+  counts = 
+  [real, supposed].map! do |el| 
+    el.to_s.split('').select{ |el| el.match?(/\d/) }.map(&:to_i) 
+  end 
+   
+  if counts[0] == counts[1]
+    return 2 
+  elsif counts.map {|arr| arr[0] - arr[1]}
+    .all? {|el| el.positive? || el.negative? }
+    return 1 
+  else
+    return 0 
+  end 
+end 
+
+real = '1-3'
+supposed = '1:1'
+
+puts which_prize?(real, supposed)
+```
