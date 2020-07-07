@@ -154,7 +154,7 @@ puts sum_of_sq?(num)
 ```
 def which_prize?(real, supposed)
   counts = 
-  [real, supposed].map! do |el| 
+  [real, supposed].map do |el| 
     el.to_s.split('').select{ |el| el.match?(/\d/) }.map(&:to_i) 
   end 
    
