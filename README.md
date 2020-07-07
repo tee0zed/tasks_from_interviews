@@ -98,25 +98,22 @@ end
 ```
 без магии
 ```
-def sqrt?(num, try)
-  try**2 == num
-end 
-
-def sqrt(num, try = num)
-  if sqrt?(num, try)
-    return try
-  elsif try**2 > num
-    try /= 2
-    try += 1
+def sqrt2(num, min = 0, max = num)
+  mid = (min+max)/2
+  try = mid**2
+  if try == num
+    return mid 
+  elsif try > num 
+    max = mid 
   else 
-    try *= 2
+    min = mid 
   end 
-  sqrt(num, try)
+  sqrt2(num, min, max)
 rescue SystemStackError
-  abort "There's no rational root for this num!"
+  "There's no rational root fot this num"
 end
 
-puts sqrt(2209)
+puts sqrt2(4588772348164)
 ```
 
 ### Consist of squares? 
