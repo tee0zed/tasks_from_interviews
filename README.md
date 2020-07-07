@@ -121,19 +121,27 @@ puts sqrt(2209)
 
 ### Consist of squares? 
 
+Напишите метод который бы возвращал "true" если число состоит из квадратов двух чисел.
 
 ```
-num = gets.to_i
- 
-def sum_of_sqr?(num)
-  num_start =  Math.sqrt(num).round + 1
-  (1..num_start).reverse_each do |first_num|
-    (1..first_num).each do |second_num|
-      return "true" if first_num**2 + second_num**2 == num
-    end
+def sum_of_sq?(num, high = Math.sqrt(num).round(1), low = 1)
+  
+  try = [high**2, low**2].sum
+  
+  if try == num
+    return true 
+  elsif try > num 
+    high -= 1
+  else 
+    low += 1
   end
-  return "false"
-end
- 
-puts sum_of_sqr?(num)
+  
+  return false if high < 0 
+  
+  sum_of_sq?(high, low, num)
+end 
+
+num = gets.to_i
+
+puts sum_of_sq?(num)
 ```
