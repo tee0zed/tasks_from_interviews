@@ -170,3 +170,45 @@ supposed = '1:1'
 
 puts which_prize?(real, supposed)
 ```
+
+### Maximum subarray sum
+
+The maximum sum subarray problem consists in finding the maximum sum of a contiguous subsequence in an array or list of integers:
+```
+maxSequence [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+-- should be 6: [4, -1, 2, 1]
+```
+
+with #each_cons
+
+```
+def max_sequence(arr)
+  (1..arr.size).map do |num|
+    max = 0
+      arr.each_cons(num) do |con|
+        max = con.sum if con.sum > max
+      end
+    max
+  end.max.to_i
+end
+```
+
+without #each_cons
+
+```
+def max_sequence(arr)
+  (1..arr.size).map do |num|
+    head = 0
+    tail = num - 1
+    max = 0
+
+    until tail > arr.size do
+      sum = arr[head..tail].sum
+      max = sum if sum > max
+      head += 1
+      tail += 1
+    end
+    max
+  end.max
+end
+```
